@@ -1,18 +1,13 @@
 const express = require('express');
 const app = express();
+const userRouter = require('./routes/users.route');
 
+app.use("/api/user",userRouter);
 app.get("/",(req,res)=>{
-    res.send("I am get request at home route");
-    res.end();
+    res.send("I am get request at Home route");
 });
-app.post("/", (req,res)=>{
-    res.send("I am post request at home route");
-});
-app.put("/",(req,res)=>{
-    res.send("I am put request at home route");
-});
-app.delete("/",(req,res)=>{
-    res.send("I am delete request at home route");
+app.get("*",(req,res)=>{
+    res.send("404!!! Not found URL");
 });
 
 module.exports = app;
