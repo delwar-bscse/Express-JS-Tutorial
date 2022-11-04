@@ -4,16 +4,20 @@ const userRouter = require('./routes/users.route');
 
 app.use("/api/user",userRouter);
 app.get("/",(req,res)=>{
-    res.send("I am  Home route");
+    res.statusCode = 200;
+    res.sendFile(__dirname+"/views/index.html");
 });
 app.get("/register",(req,res)=>{
-    res.status(200).json({
-        massage:"I am register route",
-        statusCode: 200
-    });
+    res.statusCode = 200;
+    res.sendFile(__dirname+"/views/register.html");
 });
 app.get("/login",(req,res)=>{
-    res.send("I am login route")
+    res.cookie("name","M D Hossain");
+    res.cookie("age","25");
+    res.header("id","2022");
+    // res.clearCookie("name");
+    // res.clearCookie("age");
+    res.end();
 })
 app.get("*",(req,res)=>{
     res.send("404!!! Not found URL");
