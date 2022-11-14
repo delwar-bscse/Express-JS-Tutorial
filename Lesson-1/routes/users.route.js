@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/register",(req,res)=>{
-    res.send("I am get ruquest at Register route.");
-});
-router.get("/login",(req,res)=>{
-    res.send("I am get ruquest at Login route.");
+router.get("/user",(req,res)=>{
+    res.status(200).json({
+        Name : "M D Hossain",
+        Age : "25"
+    })
 });
 
 module.exports = router;

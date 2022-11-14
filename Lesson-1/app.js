@@ -1,26 +1,23 @@
 const express = require('express');
 const app = express();
-const userRouter = require('./routes/users.route');
+const userRoute = require('./routes/users.route');
 
-app.use("/api/user",userRouter);
+app.use("/api",userRoute);
+
 app.get("/",(req,res)=>{
-    res.statusCode = 200;
+    res.statusCode = 202;
     res.sendFile(__dirname+"/views/index.html");
+})
+app.get("/login",(req,res)=>{
+    res.statusCode = 202;
+    res.sendFile(__dirname+"/views/login.html");
 });
 app.get("/register",(req,res)=>{
-    res.statusCode = 200;
+    res.statusCode = 202;
     res.sendFile(__dirname+"/views/register.html");
 });
-app.get("/login",(req,res)=>{
-    res.cookie("name","M D Hossain");
-    res.cookie("age","25");
-    res.header("id","2022");
-    // res.clearCookie("name");
-    // res.clearCookie("age");
-    res.end();
-})
 app.get("*",(req,res)=>{
-    res.send("404!!! Not found URL");
-});
+    res.end("<h1>404!!! Error Page</h1>");
+})
 
 module.exports = app;
