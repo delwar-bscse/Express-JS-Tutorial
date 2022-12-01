@@ -4,13 +4,13 @@ const app = express();
 
 const PORT = 3000;
 
-app.get("/userId/:id/userAge/:age",(req,res)=>{
-    const id = req.params.id;
-    const age = req.params.age;
+app.get("/",(req,res)=>{
+    const id = req.header('id');
+    const name = req.header('name');
 
-    res.send(`ID : ${id} & Age : ${age}`);
+    res.send(`Name : ${id} & Name : ${name}`);
 })
 
 app.listen(PORT, ()=>{
     console.log(`Server is running at http://localhost:${PORT}`);
-})
+}) 
