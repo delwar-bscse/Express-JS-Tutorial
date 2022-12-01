@@ -4,13 +4,11 @@ const app = express();
 
 const PORT = 3000;
 
-app.get("/",(req,res)=>{
-    // const name = req.query.name;
-    // const id = req.query.id;
+app.get("/userId/:id/userAge/:age",(req,res)=>{
+    const id = req.params.id;
+    const age = req.params.age;
 
-    const {name, id} = req.query;
-
-    res.send(`Student Name ${name} & ID ${id}`);
+    res.send(`ID : ${id} & Age : ${age}`);
 })
 
 app.listen(PORT, ()=>{
