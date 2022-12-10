@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 
-
-app.get("/products/:id([0-9]{3})",(req,res)=>{
+//id([0-9]{5})
+app.get("/products/:id([0-9]+)",(req,res)=>{
     res.send(`<h2>ID = ${req.params.id}</h2>`);
 });
 
