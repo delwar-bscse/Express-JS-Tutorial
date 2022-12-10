@@ -2,11 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-const middleWare = (req,res,next) => {
-    console.log('Middle Ware Function');
-    next();
-};
-app.use(middleWare);
+
+
 
 app.get("/",(req,res)=>{
     console.log('I am Home Console')
@@ -16,6 +13,10 @@ app.get("/",(req,res)=>{
 app.get("/about", (req,res)=>{
     console.log("I am About Console");
     res.send("About Route");
+});
+
+app.use((req,res,next)=>{
+    res.send("404 bad URL request");
 });
 
 const PORT = process.env.PORT;
